@@ -14,6 +14,7 @@ import { GlobalStyle } from 'styles/global-styles';
 
 import { useTranslation } from 'react-i18next';
 import Routes from './routes';
+import NavigationBar from './components/navigation-bar';
 
 export function App() {
 	const { i18n } = useTranslation();
@@ -29,7 +30,7 @@ export function App() {
 					content="A React Boilerplate application"
 				/>
 			</Helmet>
-
+			<NavigationBar />
 			<Routes />
 			<GlobalStyle />
 		</BrowserRouter>
