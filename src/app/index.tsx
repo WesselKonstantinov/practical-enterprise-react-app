@@ -14,31 +14,34 @@ import { useTranslation } from 'react-i18next';
 import Container from '@mui/material/Container';
 import Routes from './routes';
 import NavigationBar from './components/navigation-bar';
-import { Theme } from '@mui/material/styles';
+import { ThemeProvider, createTheme, Theme } from '@mui/material/styles';
 
 declare module '@mui/styles/defaultTheme' {
 	interface DefaultTheme extends Theme {}
 }
+const theme = createTheme();
 
 export function App() {
 	const { i18n } = useTranslation();
 	return (
 		<BrowserRouter>
-			<Helmet
-				titleTemplate="%s - React Boilerplate"
-				defaultTitle="React Boilerplate"
-				htmlAttributes={{ lang: i18n.language }}
-			>
-				<meta
-					name="description"
-					content="A React Boilerplate application"
-				/>
-			</Helmet>
-			<NavigationBar />
-			<Container>
-				<Routes />
-			</Container>
-			<GlobalStyle />
+			<ThemeProvider theme={theme}>
+				<Helmet
+					titleTemplate="%s - React Boilerplate"
+					defaultTitle="React Boilerplate"
+					htmlAttributes={{ lang: i18n.language }}
+				>
+					<meta
+						name="description"
+						content="A React Boilerplate application"
+					/>
+				</Helmet>
+				<NavigationBar />
+				<Container>
+					<Routes />
+				</Container>
+				<GlobalStyle />
+			</ThemeProvider>
 		</BrowserRouter>
 	);
 }
