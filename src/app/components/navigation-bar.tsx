@@ -1,34 +1,55 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
+import { makeStyles } from '@mui/styles';
+import { colors } from '@mui/material';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
-import Typography from '@mui/material/Button';
 import Button from '@mui/material/Button';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
+
+const useStyles = makeStyles({
+	link: {
+		color: colors.lightBlue[50],
+		textDecoration: 'none',
+	},
+	title: {
+		flexGrow: 1,
+	},
+});
 
 const NavigationBar = () => {
+	const classes = useStyles();
+
 	return (
 		<Box sx={{ flexGrow: 1 }}>
 			<AppBar position="static">
 				<Toolbar>
-					<IconButton
-						size="large"
-						edge="start"
-						color="inherit"
-						aria-label="menu"
-						sx={{ mr: 2 }}
+					<Link
+						className={`${classes.link} ${classes.title}`}
+						to={'/'}
 					>
-						<MenuIcon />
-					</IconButton>
-					<Typography
-						variant="text"
-						component="div"
-						sx={{ flexGrow: 1 }}
-					>
-						News
-					</Typography>
-					<Button color="inherit">Login</Button>
+						LOGO
+					</Link>
+					<Button color="inherit">
+						<Link className={classes.link} to={'/'}>
+							Home
+						</Link>
+					</Button>
+					<Button color="inherit">
+						<Link className={classes.link} to={'/about'}>
+							About
+						</Link>
+					</Button>
+					<Button color="inherit">
+						<Link className={classes.link} to={'/dashboard'}>
+							Dashboard
+						</Link>
+					</Button>
+					<Button color="inherit">
+						<Link className={classes.link} to={'/login'}>
+							Login
+						</Link>
+					</Button>
 				</Toolbar>
 			</AppBar>
 		</Box>
