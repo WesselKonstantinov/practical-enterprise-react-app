@@ -14,6 +14,11 @@ import { useTranslation } from 'react-i18next';
 import Container from '@mui/material/Container';
 import Routes from './routes';
 import NavigationBar from './components/navigation-bar';
+import { Theme } from '@mui/material/styles';
+
+declare module '@mui/styles/defaultTheme' {
+	interface DefaultTheme extends Theme {}
+}
 
 export function App() {
 	const { i18n } = useTranslation();
