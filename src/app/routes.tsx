@@ -1,6 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import AboutPage from './views/AboutPage';
+import AboutPage from './views/pages/AboutPage';
 import Home from './views/pages/Home';
 
 const Routes = () => {
