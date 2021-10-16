@@ -9,10 +9,9 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
-
 import { GlobalStyle } from 'styles/global-styles';
-
 import { useTranslation } from 'react-i18next';
+import Container from '@mui/material/Container';
 import Routes from './routes';
 import NavigationBar from './components/navigation-bar';
 
@@ -31,7 +30,9 @@ export function App() {
 				/>
 			</Helmet>
 			<NavigationBar />
-			<Routes />
+			<Container>
+				<Routes />
+			</Container>
 			<GlobalStyle />
 		</BrowserRouter>
 	);
