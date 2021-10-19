@@ -7,9 +7,12 @@ import List from '@mui/material/List';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
+import Divider from '@mui/material/Divider';
+import ListSubheader from '@mui/material/ListSubheader';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useRouteMatch } from 'react-router';
+import { PieChart as PieChartIcon } from 'react-feather';
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -67,8 +70,18 @@ const DashboardSidebarNavigation = () => {
 						Logo
 					</Link>
 				</Toolbar>
+				<Divider />
 				<div className={classes.drawerContainer}>
 					<List>
+						<ListSubheader>Reports</ListSubheader>
+						<Link className={classes.link} to={`${url}`}>
+							<ListItemButton>
+								<ListItemIcon>
+									<PieChartIcon />
+								</ListItemIcon>
+								<ListItemText primary={'Dashboard'} />
+							</ListItemButton>
+						</Link>
 						<Link
 							className={classes.link}
 							to={`${url}/settings-and-privacy`}
