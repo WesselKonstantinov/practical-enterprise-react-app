@@ -11,9 +11,8 @@ import { Helmet } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
 import { GlobalStyle } from 'styles/global-styles';
 import { useTranslation } from 'react-i18next';
-import Container from '@mui/material/Container';
+import MainLayout from './layouts/main-layout';
 import Routes from './routes';
-import NavigationBar from './components/navigation-bar';
 import { ThemeProvider, createTheme, Theme } from '@mui/material/styles';
 
 declare module '@mui/styles/defaultTheme' {
@@ -36,10 +35,9 @@ export function App() {
 						content="A React Boilerplate application"
 					/>
 				</Helmet>
-				<NavigationBar />
-				<Container>
+				<MainLayout>
 					<Routes />
-				</Container>
+				</MainLayout>
 				<GlobalStyle />
 			</ThemeProvider>
 		</BrowserRouter>
