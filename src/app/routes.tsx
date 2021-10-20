@@ -51,16 +51,6 @@ const Routes = () => {
 											),
 									)}
 								/>
-								<Route
-									exact
-									path={path + '/settings-and-privacy'}
-									component={lazy(
-										() =>
-											import(
-												'./views/dashboard/settings-and-privacy'
-											),
-									)}
-								/>
 							</Switch>
 						</Dashboard>
 					)}

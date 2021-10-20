@@ -10,8 +10,6 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import Divider from '@mui/material/Divider';
 import ListSubheader from '@mui/material/ListSubheader';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import SettingsIcon from '@mui/icons-material/Settings';
 import { useRouteMatch } from 'react-router';
 import {
 	PieChart as PieChartIcon,
@@ -134,23 +132,10 @@ const DashboardSidebarNavigation = () => {
 								</Link>
 							</List>
 						</Collapse>
-						<Link
-							className={classes.link}
-							to={`${url}/settings-and-privacy`}
-						>
-							<ListItemButton>
-								<ListItemIcon>
-									<SettingsIcon />
-								</ListItemIcon>
-								<ListItemText
-									primary={'settings and privacy'}
-								/>
-							</ListItemButton>
-						</Link>
 						<a className={classes.link} href={'/'}>
 							<ListItemButton>
 								<ListItemIcon>
-									<ExitToAppIcon />
+									<LogOutIcon />
 								</ListItemIcon>
 								<ListItemText primary={'logout'} />
 							</ListItemButton>
