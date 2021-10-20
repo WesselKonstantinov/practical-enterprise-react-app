@@ -1,6 +1,7 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@mui/styles';
+import Collapse from '@mui/material/Collapse';
 import Drawer from '@mui/material/Drawer';
 import Toolbar from '@mui/material/Toolbar';
 import List from '@mui/material/List';
@@ -12,7 +13,15 @@ import ListSubheader from '@mui/material/ListSubheader';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import SettingsIcon from '@mui/icons-material/Settings';
 import { useRouteMatch } from 'react-router';
-import { PieChart as PieChartIcon } from 'react-feather';
+import {
+	PieChart as PieChartIcon,
+	ShoppingCart as ShoppingCartIcon,
+	ChevronUp as ChevronUpIcon,
+	ChevronDown as ChevronDownIcon,
+	List as ListIcon,
+	FilePlus as FilePlusIcon,
+	LogOut as LogOutIcon,
+} from 'react-feather';
 
 const drawerWidth = 240;
 const useStyles = makeStyles(theme => ({
@@ -44,13 +53,22 @@ const useStyles = makeStyles(theme => ({
 		textDecoration: 'none',
 		color: 'inherit',
 	},
+	nested: {
+		paddingLeft: theme.spacing(4),
+	},
 }));
 
 const DashboardSidebarNavigation = () => {
 	const classes = useStyles();
 	const { url } = useRouteMatch();
 
+	const [open, setOpen] = useState(false);
+
 	useEffect(() => {}, []);
+
+	const handleClick = () => {
+		setOpen(!open);
+	};
 
 	return (
 		<div className={classes.root}>
@@ -82,6 +100,40 @@ const DashboardSidebarNavigation = () => {
 								<ListItemText primary={'Dashboard'} />
 							</ListItemButton>
 						</Link>
+						<ListSubheader>Management</ListSubheader>
+						<ListItemButton onClick={handleClick}>
+							<ListItemIcon>
+								<ShoppingCartIcon />
+							</ListItemIcon>
+							<ListItemText primary="Products" />
+							{open ? <ChevronUpIcon /> : <ChevronDownIcon />}
+						</ListItemButton>
+						<Collapse in={open} timeout="auto" unmountOnExit>
+							<List component="div" disablePadding>
+								<Link
+									className={classes.link}
+									to={`${url}/list-products`}
+								>
+									<ListItemButton>
+										<ListItemIcon>
+											<ListIcon />
+										</ListItemIcon>
+										<ListItemText primary="List Products" />
+									</ListItemButton>
+								</Link>
+								<Link
+									className={classes.link}
+									to={`${url}/create-product`}
+								>
+									<ListItemButton className={classes.nested}>
+										<ListItemIcon>
+											<FilePlusIcon />
+										</ListItemIcon>
+										<ListItemText primary="Create Product" />
+									</ListItemButton>
+								</Link>
+							</List>
+						</Collapse>
 						<Link
 							className={classes.link}
 							to={`${url}/settings-and-privacy`}
