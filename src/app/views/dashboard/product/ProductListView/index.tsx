@@ -1,8 +1,11 @@
-import React from 'react';
-import Container from '@mui/material/Container';
+import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@mui/styles';
 import Header from './Header';
 import Results from './Results';
+import { ProductType } from 'models/product-type';
+import { getProductAxios } from 'services/productService';
+import { Backdrop, Box, CircularProgress, Container } from '@mui/material';
+import Page from 'app/components/page';
 
 const useStyles = makeStyles(theme => ({
 	backdrop: {
@@ -19,11 +22,50 @@ const useStyles = makeStyles(theme => ({
 const ProductListView = () => {
 	const classes = useStyles();
 
+	const [products, setProducts] = useState<ProductType[]>([]);
+	const [open, setOpen] = useState(false);
+
+	useEffect(() => {
+		fetchProducts();
+	}, []);
+
+	const fetchProducts = async () => {
+		handleToggle();
+		try {
+			const { data } = await getProductAxios();
+			setProducts(data);
+		} catch (e) {
+			alert('Something is wrong');
+		}
+		handleClose();
+	};
+
+	const handleClose = () => {
+		setOpen(false);
+	};
+
+	const handleToggle = () => {
+		setOpen(!open);
+	};
+
 	return (
-		<Container>
-			<Header />
-			<Results />
-		</Container>
+		<Page className={classes.root} title="Product List">
+			<Container maxWidth={false}>
+				<Header />
+				{products && (
+					<Box mt={3}>
+						<Results products={products} />
+					</Box>
+				)}
+				<Backdrop
+					className={classes.backdrop}
+					open={open}
+					onClick={handleClose}
+				>
+					<CircularProgress color="inherit" />
+				</Backdrop>
+			</Container>
+		</Page>
 	);
 };
 
