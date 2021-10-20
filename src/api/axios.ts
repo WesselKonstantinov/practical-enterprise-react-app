@@ -7,4 +7,7 @@ requests */
 const api = axios.create({ baseURL: 'http://localhost:5000/' });
 
 export default api;
-export const Endpoints = { sales: 'sales' };
+export const Endpoints = {
+	sales: 'sales',
+	products: 'products',
+};
