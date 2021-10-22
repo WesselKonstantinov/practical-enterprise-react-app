@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { makeStyles } from '@mui/styles';
+import { makeStyles, createStyles } from '@mui/styles';
 import Header from './Header';
 import Results from './Results';
 import { ProductType } from 'models/product-type';
@@ -7,17 +7,19 @@ import { getProductAxios } from 'services/productService';
 import { Backdrop, Box, CircularProgress, Container } from '@mui/material';
 import Page from 'app/components/page';
 
-const useStyles = makeStyles(theme => ({
-	backdrop: {
-		zIndex: theme.zIndex.drawer + 1,
-		color: '#fff',
-	},
-	root: {
-		minHeight: '100%',
-		paddingTop: theme.spacing(3),
-		paddingBottom: 100,
-	},
-}));
+const useStyles = makeStyles(theme =>
+	createStyles({
+		backdrop: {
+			zIndex: theme.zIndex.drawer + 1,
+			color: '#fff',
+		},
+		root: {
+			minHeight: '100%',
+			paddingTop: theme.spacing(3),
+			paddingBottom: 100,
+		},
+	}),
+);
 
 const ProductListView = () => {
 	const classes = useStyles();

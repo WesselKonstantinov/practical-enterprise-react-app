@@ -45,13 +45,6 @@ type Props = {
 };
 
 const useStyles = makeStyles(theme => ({
-	root: {},
-	// action: {
-	// 	marginBottom: theme.spacing(1),
-	// 	'& + &': {
-	// 		marginLeft: theme.spacing(1),
-	// 	},
-	// },
 	availabilityField: {
 		marginLeft: theme.spacing(2),
 		flexBasis: 200,
@@ -85,6 +78,7 @@ const useStyles = makeStyles(theme => ({
 		height: 68,
 		width: 68,
 	},
+	root: {},
 	queryField: {
 		width: 500,
 	},

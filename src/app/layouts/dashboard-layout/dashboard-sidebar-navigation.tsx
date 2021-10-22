@@ -112,7 +112,7 @@ const DashboardSidebarNavigation = () => {
 									className={classes.link}
 									to={`${url}/list-products`}
 								>
-									<ListItemButton>
+									<ListItemButton className={classes.nested}>
 										<ListItemIcon>
 											<ListIcon />
 										</ListItemIcon>
