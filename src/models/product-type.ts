@@ -15,7 +15,7 @@ export type ProductType = {
 	quantity: number;
 	updatedAt: string | number;
 	variants: number;
-	description: number;
+	description: string;
 	images: string[];
 	includesTaxes: boolean;
 	isTaxable: boolean;
