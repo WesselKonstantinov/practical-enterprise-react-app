@@ -3,9 +3,10 @@
  */
 
 import { combineReducers } from '@reduxjs/toolkit';
+import calendarReducer from 'features/calendar/calendarSlice';
 
 const injectedReducers = {
-	// reducers here to be added one by one.
+	calendar: calendarReducer,
 };
 
 const rootReducer = combineReducers({
