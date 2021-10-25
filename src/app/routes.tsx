@@ -51,6 +51,16 @@ const Routes = () => {
 											),
 									)}
 								/>
+								<Route
+									exact
+									path={path + '/calendar'}
+									component={lazy(
+										() =>
+											import(
+												'./views/dashboard/calendar/CalendarView'
+											),
+									)}
+								/>
 							</Switch>
 						</Dashboard>
 					)}

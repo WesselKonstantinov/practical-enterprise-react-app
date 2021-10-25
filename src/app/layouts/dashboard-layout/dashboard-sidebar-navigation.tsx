@@ -14,6 +14,7 @@ import { useRouteMatch } from 'react-router';
 import {
 	PieChart as PieChartIcon,
 	ShoppingCart as ShoppingCartIcon,
+	Calendar as CalendarIcon,
 	ChevronUp as ChevronUpIcon,
 	ChevronDown as ChevronDownIcon,
 	List as ListIcon,
@@ -132,6 +133,15 @@ const DashboardSidebarNavigation = () => {
 								</Link>
 							</List>
 						</Collapse>
+						<ListSubheader>Applications</ListSubheader>
+						<Link className={classes.link} to={`${url}/calendar`}>
+							<ListItemButton>
+								<ListItemIcon>
+									<CalendarIcon />
+								</ListItemIcon>
+								<ListItemText primary={'Calendar'} />
+							</ListItemButton>
+						</Link>
 						<a className={classes.link} href={'/'}>
 							<ListItemButton>
 								<ListItemIcon>
